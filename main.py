@@ -1,7 +1,7 @@
 import tkinter as tk
-from models.portfolio_sujet import PortfolioSujet
-from observers.csv_observer import CsvObserver
-from observers.observer import Observer
+from modeles.portfolio_sujet import PortfolioSujet
+from observateurs.csv_observer import CsvObserver
+from observateurs.observateur import Observateur
 
 INTERVALLE_MS = 30000
 
@@ -16,7 +16,7 @@ def formater_prix(prix, ouverture):
     return f"{prix:.2f} $  {symbole} {abs(variation):.2f}%", couleur
 
 
-class PrixObserver(Observer):
+class PrixObserver(Observateur):
     def __init__(self, parent_frame):
         self.frame_prix = parent_frame
         self.labels_prix = {}
@@ -49,7 +49,7 @@ class PrixObserver(Observer):
             self.labels_prix[ticker].config(text=texte, fg=couleur)
 
 
-class ValeurObserver(Observer):
+class ValeurObserver(Observateur):
     def __init__(self, label_valeur, label_variation):
         self.label_valeur = label_valeur
         self.label_variation = label_variation
@@ -76,7 +76,7 @@ class ValeurObserver(Observer):
         )
 
 
-class AlerteObserver(Observer):
+class AlerteObserver(Observateur):
     def __init__(self, label_alertes):
         self.label_alertes = label_alertes
 
