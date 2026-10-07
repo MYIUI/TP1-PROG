@@ -1,6 +1,6 @@
 from datetime import datetime
 import yfinance as yf
-from models.subject import Sujet
+from modeles.sujet import Sujet
 
 class PortfolioSujet(Sujet):
     def __init__(self, titres_initiaux=None):

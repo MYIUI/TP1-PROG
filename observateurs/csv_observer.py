@@ -1,6 +1,6 @@
-from observers.observer import Observer
+from observateurs.observateur import Observateur
 
-class CsvObserver(Observer):
+class CsvObserver(Observateur):
     def __init__(self, chemin_fichier="portfolio.csv"):
         self.chemin_fichier = chemin_fichier
 
