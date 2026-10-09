@@ -5,21 +5,22 @@
 classDiagram
     class Sujet {
         <<abstract>>
-        -observateurs: list
-        +abonner(obs)
-        +desabonner(obs)
-        +notifier()
+        #_observateurs: list
+        +abonner(observateur) None
+        +desabonner(observateur) None
+        +notifier() None
         +get_donnees()* dict
     }
 
     class Observateur {
         <<interface>>
-        +actualiser(sujet)*
+        +actualiser(sujet)* None
     }
 
     class PortfolioSujet {
         -titres: dict
         -prix: dict
+        +recuperer_prix_ticker(ticker) tuple
         +ajouter_titre(ticker, quantite, seuil_bas, seuil_haut)
         +retirer_titre(ticker)
         +modifier_titre(ticker, quantite, seuil_bas, seuil_haut)
@@ -29,6 +30,7 @@ classDiagram
 
     class PrixObserver {
         -frame_prix: tk.LabelFrame
+        -frames_prix: dict
         -labels_prix: dict
         +actualiser(sujet)
     }
@@ -54,5 +56,5 @@ classDiagram
     Observateur <|.. ValeurObserver
     Observateur <|.. AlerteObserver
     Observateur <|.. CsvObserver
-    Sujet o--> Observateur : observateurs
+    Sujet o--> Observateur : _observateurs
 ```
